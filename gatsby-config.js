@@ -1,9 +1,10 @@
 module.exports = {
-  pathPrefix: `/gatsby-creative`,
+  //pathPrefix: `/gatsby-creative`,
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: 'Herbicare|Cognisense',
+    author: 'Hassam Chaudhry',
+    description: 'A Nootropic Supplements Company | Smart Supplements',
+    siteUrl: 'https://smartsupplements.ca',
   },
   plugins: [
     `gatsby-plugin-stripe`,

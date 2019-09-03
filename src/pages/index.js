@@ -60,7 +60,7 @@ export default class IndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <SEO title="Home"/>
+        <SEO title="Herbicare|Cognisense"/>
         <section className="page-section bg-primary" id="discover">
           <div className="container">
             <div className="row justify-content-center">
