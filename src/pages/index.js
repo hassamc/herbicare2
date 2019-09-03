@@ -8,6 +8,10 @@ import Scroller from "../components/scroller"
 import PortfolioModal from "../components/portfolio/modal"
 import PortfolioCarousel from "../components/portfolio/carousel"
 
+
+
+
+
 export default class IndexPage extends React.Component {
   constructor(props) {
     super(props)
@@ -16,8 +20,27 @@ export default class IndexPage extends React.Component {
       modalShow: false,
       modalCurrent: 0
     }
+    this.redirectToCheckout = this.redirectToCheckout.bind(this);
     this.handlePortfolioClick = this.handlePortfolioClick.bind(this);
     this.setModal = this.setModal.bind(this);
+
+  }
+
+  componentDidMount() {
+    this.stripe = window.Stripe("pk_test_hI9XDKfEBryGNeasJyFK0Vlj00RgxD7uI2")
+  }
+
+  async redirectToCheckout(event) {
+    event.preventDefault()
+    const { error } = await this.stripe.redirectToCheckout({
+      items: [{ sku: "sku_FjpF5383lsXy99", quantity: 1 }],
+      successUrl: `http://localhost:8000/page-2/`,
+      cancelUrl: `http://localhost:8000/`,
+    })
+
+    if (error) {
+      console.warn("Error:", error)
+    }
   }
 
   handlePortfolioClick(index, e) {
@@ -32,23 +55,21 @@ export default class IndexPage extends React.Component {
     });
   }
 
+  
+
   render() {
     return (
       <Layout>
         <SEO title="Home"/>
-        <section className="page-section bg-primary" id="about">
+        <section className="page-section bg-primary" id="discover">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-8 text-center">
-                <h2 className="text-white mt-0">We've got what you need!</h2>
+                <h2 className="text-white mt-0">Discover CogniSense™</h2>
                 <hr className="divider light my-4"/>
-                <p className="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up
-                  and
-                  running in no time! Choose one of our open source, free to download, and easy to use themes! No
-                  strings
-                  attached!</p>
+                <p className="text-white-50 mb-4">Cognizance is defined as knowledge, attention, awareness and CogniSense™ has been designed to deliver that and more. It contains a blend of eleven clinically studied ingredients with published medical literature to supply the brain with focus, energy, and improved cognition. Its short-term effects include stimulation, wakefulness, and concentration with added long-term benefits of augmented brain health, healthier blood flow and improved memory for double the impact. Unlike coffee and energy drinks, CogniSense™ supplementation does not follow a state of depletion and drowsiness. Coffee and energy drinks are known to cause anxiety and nervousness in certain individuals whilst CogniSense™ reduces anxiety and stress allowing relaxed and focused mental ability to tackle challenging tasks. In fact, its long-term benefits continue to accumulate to increase mental health, learning ability, memory, and recall. It enhances mental performance by improving blood flow and enriching the effects of neurotransmitters readily available in the brain, neurotransmitters which will enhance and make communication between brain cells more efficient enabling fluent thought formation and creativity. CogniSense™ is a well-rounded effort to relieve stress and anxiety while promoting happiness, focus, attention, learning abilities, and memory.</p>
                 <a className="btn btn-light btn-xl js-scroll-trigger" href="#services"
-                   onClick={Scroller.handleAnchorScroll}>Get Started!</a>
+                   onClick={Scroller.handleAnchorScroll}>Read Research!</a>
               </div>
             </div>
           </div>
@@ -175,13 +196,15 @@ export default class IndexPage extends React.Component {
             </div>
           </div>
         </section>
-
+        
         <section className="page-section bg-dark text-white">
           <div className="container text-center">
-            <h2 className="mb-4">Free Download at Start Bootstrap!</h2>
-            <a className="btn btn-light btn-xl" href="https://startbootstrap.com/themes/creative/">Download Now!</a>
+            <h2 className="mb-4">Buy Cognisense!</h2>
+            <button onClick={event => this.redirectToCheckout(event)} className="btn btn-light btn-xl">Order Now!</button>
           </div>
         </section>
+        
+        
 
         <section className="page-section" id="contact">
           <div className="container">
@@ -189,7 +212,7 @@ export default class IndexPage extends React.Component {
               <div className="col-lg-8 text-center">
                 <h2 className="mt-0">Let's Get In Touch!</h2>
                 <hr className="divider my-4"/>
-                <p className="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an
+                <p className="text-muted mb-5">Have any questions about our product? Give us a call or send us an
                   email
                   and we will get back to you as soon as possible!</p>
               </div>
@@ -197,7 +220,7 @@ export default class IndexPage extends React.Component {
             <div className="row">
               <div className="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
                 <i className="fas fa-phone fa-3x mb-3 text-muted"></i>
-                <div>+1 (202) 555-0149</div>
+                <div>+1 (416) 786-7578</div>
               </div>
               <div className="col-lg-4 mr-auto text-center">
                 <i className="fas fa-envelope fa-3x mb-3 text-muted"></i>
