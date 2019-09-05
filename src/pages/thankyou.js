@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const NotFoundPage = () => (
   <div>
-    <SEO title="404: Not found" />
+    <SEO title="Thank You" />
     <div class="jumbotron text-center">
       <h1 class="display-3">Thank You For Your Order!</h1>
       <p class="lead">An email containing a <strong>receipt</strong>has been sent to you.</p>
