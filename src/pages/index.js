@@ -63,8 +63,14 @@ export default class IndexPage extends React.Component {
         <SEO title="Herbicare|Cognisense"/>
         <section className="page-section bg-primary" id="discover">
           <div className="container">
+          <Img
+                fluid={this.props.data.singleimage.childImageSharp.fluid}
+                alt=""
+          />
             <div className="row justify-content-center">
+             
               <div className="col-lg-8 text-center">
+                <br></br>
                 <h2 className="text-white mt-0">Discover CogniSense™</h2>
                 <hr className="divider light my-4"/>
                 <p className="text-white-50 mb-4">Cognizance is defined as knowledge, attention, awareness and CogniSense™ has been designed to deliver that and more. It contains a blend of eleven clinically studied ingredients with published medical literature to supply the brain with focus, energy, and improved cognition. Its short-term effects include stimulation, wakefulness, and concentration with added long-term benefits of augmented brain health, healthier blood flow and improved memory for double the impact. Unlike coffee and energy drinks, CogniSense™ supplementation does not follow a state of depletion and drowsiness. Coffee and energy drinks are known to cause anxiety and nervousness in certain individuals whilst CogniSense™ reduces anxiety and stress allowing relaxed and focused mental ability to tackle challenging tasks. In fact, its long-term benefits continue to accumulate to increase mental health, learning ability, memory, and recall. It enhances mental performance by improving blood flow and enriching the effects of neurotransmitters readily available in the brain, neurotransmitters which will enhance and make communication between brain cells more efficient enabling fluent thought formation and creativity. CogniSense™ is a well-rounded effort to relieve stress and anxiety while promoting happiness, focus, attention, learning abilities, and memory.</p>
@@ -77,35 +83,36 @@ export default class IndexPage extends React.Component {
 
         <section className="page-section" id="services">
           <div className="container">
-            <h2 className="text-center mt-0">At Your Service</h2>
+            <h2 className="text-center mt-0">Developed with Care</h2>
             <hr className="divider my-4"/>
             <div className="row">
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="mt-5">
-                  <i className="fas fa-4x fa-gem text-primary mb-4"></i>
-                  <h3 className="h4 mb-2">Sturdy Themes</h3>
-                  <p className="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+                  
+                  <img src={require('../images/leaf.png')} alt="leaf"/>
+                  <h3 className="h4 mb-2">Engineered by Nature</h3>
+                  <p className="text-muted mb-0">Blended from natural herbs</p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="mt-5">
-                  <i className="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-                  <h3 className="h4 mb-2">Up to Date</h3>
-                  <p className="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+                  <img src={require('../images/stetho.png')} alt="stetho"/>
+                  <h3 className="h4 mb-2">Clinically studied ingredients</h3>
+                  <p className="text-muted mb-0">Developed by doctors</p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="mt-5">
-                  <i className="fas fa-4x fa-globe text-primary mb-4"></i>
-                  <h3 className="h4 mb-2">Ready to Publish</h3>
-                  <p className="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+                  <img src={require('../images/mem.png')} alt="mem"/>
+                  <h3 className="h4 mb-2">Proven to improve Memory</h3>
+                  <p className="text-muted mb-0">Improves test-taking abilities</p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="mt-5">
-                  <i className="fas fa-4x fa-heart text-primary mb-4"></i>
-                  <h3 className="h4 mb-2">Made with Love</h3>
-                  <p className="text-muted mb-0">Is it really open source if it's not made with love?</p>
+                  <img src={require('../images/gear.png')} alt="gear"/>
+                  <h3 className="h4 mb-2">Sharpens the Mind</h3>
+                  <p className="text-muted mb-0">Promotes blood flow, Tackles anxiety, Enhances cognition</p>
                 </div>
               </div>
             </div>
@@ -116,14 +123,14 @@ export default class IndexPage extends React.Component {
           <div className="container-fluid p-0">
             <div className="row no-gutters">
               <div className="col-lg-4 col-sm-6">
-                <a className="portfolio-box" href="img/portfolio/fullsize/1.jpg" onClick={this.handlePortfolioClick.bind(this, 0)}>
+                <a className="portfolio-box" href="img/portfolio/fullsize/1.png" onClick={this.handlePortfolioClick.bind(this, 0)}>
                   <Img fluid={this.props.data.images.edges[0].node.childImageSharp.fluid}/>
                   <div className="portfolio-box-caption">
                     <div className="project-category text-white-50">
-                      Category
+                      Herbs and Nutrients for the Mind: Natural Brain Enhancers
                     </div>
                     <div className="project-name">
-                      Project Name
+                      Huperzine A inhibits the breakdown of the neurotransmitter acetylcholine by the enzyme acetylcholinesterase, working as a cognitive enhancer for improving memory and concentration.
                     </div>
                   </div>
                 </a>
@@ -133,10 +140,10 @@ export default class IndexPage extends React.Component {
                   <Img fluid={this.props.data.images.edges[1].node.childImageSharp.fluid}/>
                   <div className="portfolio-box-caption">
                     <div className="project-category text-white-50">
-                      Category
+                      Epinephrine Enhancement of Human Memory Consolidation: Interaction with Arousal at Encoding
                     </div>
                     <div className="project-name">
-                      Project Name
+                      Norepinephrine increases arousal and alertness, promotes vigilance, enhances formation and retrieval of memory, and focuses attention. Hormones such as epinephrine, can produce retrograde enhancement of long-term memory in humans.
                     </div>
                   </div>
                 </a>
@@ -146,10 +153,10 @@ export default class IndexPage extends React.Component {
                   <Img fluid={this.props.data.images.edges[2].node.childImageSharp.fluid}/>
                   <div className="portfolio-box-caption">
                     <div className="project-category text-white-50">
-                      Category
+                     PET, Infrared Spectroscopy and Transcranial Doppler Methods on Neuroprotective Drug Vinpocetine: A Summary of Evidences
                     </div>
                     <div className="project-name">
-                      Project Name
+                      Taking vinpocetine along with ginkgo also appears to improve short-term memory in healthy adults. vinpocetine might improve blood flow to the brain, it is used for enhancing memory and preventing Alzheimer’s disease and other conditions that harm learning, memory, and information processing skills as people age.
                     </div>
                   </div>
                 </a>
@@ -159,40 +166,15 @@ export default class IndexPage extends React.Component {
                   <Img fluid={this.props.data.images.edges[3].node.childImageSharp.fluid}/>
                   <div className="portfolio-box-caption">
                     <div className="project-category text-white-50">
-                      Category
+                      L-Theanine Improves Memory and Attention in Subjects with Mild Cognitive Impairment: A Double-Blind Placebo-Controlled Study
                     </div>
                     <div className="project-name">
-                      Project Name
+                     Able to cross the blood–brain barrier, theanine has reported psychoactive properties. Theanine has been studied for its potential ability to reduce mental and physical stress, improve cognition, and boost mood and cognitive performance in a synergistic manner with caffeine.
                     </div>
                   </div>
                 </a>
               </div>
-              <div className="col-lg-4 col-sm-6">
-                <a className="portfolio-box" href="img/portfolio/fullsize/5.jpg" onClick={this.handlePortfolioClick.bind(this, 4)}>
-                  <Img fluid={this.props.data.images.edges[4].node.childImageSharp.fluid}/>
-                  <div className="portfolio-box-caption">
-                    <div className="project-category text-white-50">
-                      Category
-                    </div>
-                    <div className="project-name">
-                      Project Name
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div className="col-lg-4 col-sm-6">
-                <a className="portfolio-box" href="img/portfolio/fullsize/6.jpg" onClick={this.handlePortfolioClick.bind(this, 5)}>
-                  <Img fluid={this.props.data.images.edges[5].node.childImageSharp.fluid}/>
-                  <div className="portfolio-box-caption p-3">
-                    <div className="project-category text-white-50">
-                      Category
-                    </div>
-                    <div className="project-name">
-                      Project Name
-                    </div>
-                  </div>
-                </a>
-              </div>
+              
             </div>
           </div>
         </section>
@@ -224,7 +206,7 @@ export default class IndexPage extends React.Component {
               </div>
               <div className="col-lg-4 mr-auto text-center">
                 <i className="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                <a className="d-block" href="mailto:contact@yourwebsite.com">contact@yourwebsite.com</a>
+                <a className="d-block" href="mailto:contact@yourwebsite.com">herbicaresupport@gmail.com</a>
               </div>
             </div>
           </div>
@@ -251,5 +233,13 @@ export const imageData = graphql`
         }
       }
     }
-  }
+  
+    singleimage: file(relativePath: { eq: "discover.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    } 
+  }  
 `
