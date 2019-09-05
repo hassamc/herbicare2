@@ -1,4 +1,5 @@
 import React from "react"
+import ReactDOM from 'react-dom';
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -8,6 +9,11 @@ import Scroller from "../components/scroller"
 import PortfolioModal from "../components/portfolio/modal"
 import PortfolioCarousel from "../components/portfolio/carousel"
 
+const encode = (data) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+}
 
 export default class IndexPage extends React.Component {
   constructor(props) {
@@ -20,6 +26,7 @@ export default class IndexPage extends React.Component {
     this.redirectToCheckout = this.redirectToCheckout.bind(this);
     this.handlePortfolioClick = this.handlePortfolioClick.bind(this);
     this.setModal = this.setModal.bind(this);
+    this.state = { fname: "", lname: "", email: "", address: "" , postalcode: "", country: ""};
 
   }
 
@@ -52,9 +59,22 @@ export default class IndexPage extends React.Component {
     });
   }
 
-  
+  handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...this.state })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+
+    e.preventDefault();
+  };
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
+    const { fname, lname, email, address, postalcode, country } = this.state;
     return (
       <Layout>
         <SEO title="Herbicare|Cognisense"/>
@@ -183,22 +203,23 @@ export default class IndexPage extends React.Component {
                 <div className="col-xs-12 col-sm-6 offset-sm-3 example-col">
                     <div className="card">
                         <div className="card-block">
-                            <form className="k-form" name="contact" method="post" data-netlify="true">
+                            <form onSubmit={this.handleSubmit} className="k-form" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+                              <input type="hidden" name="form-name" value="contact" />
                                 <fieldset>
                                     <legend>User Details</legend>
 
                                     <label className="k-form-field">
                                         <span>First Name</span>
-                                        <input className="k-textbox" placeholder="Your Name" />
+                                        <input type="text" className="k-textbox" placeholder="Your Name" name="fname" value={fname} onChange={this.handleChange} />
                                     </label>
                                     <label className="k-form-field">
                                         <span>Last Name</span>
-                                        <input className="k-textbox" placeholder="Your Last Name" />
+                                        <input type="text" className="k-textbox" placeholder="Your Last Name"  name="lname" value={lname} onChange={this.handleChange}/>
                                     </label>
 
                                     <label className="k-form-field">
                                         <span>Email <span className="k-required">*</span></span>
-                                        <input type="email" className="k-textbox" placeholder="Your Email" />
+                                        <input type="email" className="k-textbox" placeholder="Your Email"  name="email" value={email} onChange={this.handleChange}/>
                                     </label>
 
                                 </fieldset>
@@ -207,18 +228,18 @@ export default class IndexPage extends React.Component {
                                     <legend>Shipping Address</legend>
                                     <label className="k-form-field">
                                         <span>Address</span>
-                                        <input className="k-textbox" placeholder="Your Address" />
+                                        <input type="text" className="k-textbox" placeholder="Your Address"  name="address" value={address} onChange={this.handleChange}/>
                                     </label>
                                     <label className="k-form-field">
                                         <span>Postal Code</span>
-                                        <input className="k-textbox" placeholder="Your Postal Code"/>
+                                        <input type="text" className="k-textbox" placeholder="Your Postal Code" name="postalcode" value={postalcode} onChange={this.handleChange}/>
                                     </label>
                                     <label className="k-form-field">
                                         <span>Country</span>
-                                        <input className="k-textbox" placeholder="Your Country"/>
+                                        <input type="text" className="k-textbox" placeholder="Your Country" name="country" value={country} onChange={this.handleChange}/>
                                     </label>
                                 </fieldset>
-                                <button type="submit" onClick={event => this.redirectToCheckout(event)} className="btn btn-light btn-xl">Order Now!</button>
+                              <button type="submit" onClick={event => this.redirectToCheckout(event)} className="btn btn-primary btn-xl">Order Now!</button>
                             </form>
                         </div>
                     </div>
@@ -260,6 +281,7 @@ export default class IndexPage extends React.Component {
   }
 }
 
+ReactDOM.render(<IndexPage/>, document.getElementById("root"));
 
 export const imageData = graphql`
   query {
