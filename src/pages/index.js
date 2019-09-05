@@ -9,9 +9,6 @@ import PortfolioModal from "../components/portfolio/modal"
 import PortfolioCarousel from "../components/portfolio/carousel"
 
 
-
-
-
 export default class IndexPage extends React.Component {
   constructor(props) {
     super(props)
@@ -34,8 +31,8 @@ export default class IndexPage extends React.Component {
     event.preventDefault()
     const { error } = await this.stripe.redirectToCheckout({
       items: [{ sku: "sku_FjpF5383lsXy99", quantity: 1 }],
-      successUrl: `http://localhost:8000/page-2/`,
-      cancelUrl: `http://localhost:8000/`,
+      successUrl: `https://smartsupplements.ca`,
+      cancelUrl: `https://smartsupplements.ca`,
     })
 
     if (error) {

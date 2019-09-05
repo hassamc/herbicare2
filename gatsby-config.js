@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: 'https://smartsupplements.ca',
   },
   plugins: [
+    `gatsby-plugin-material-ui`,
     `gatsby-plugin-stripe`,
     `gatsby-plugin-react-helmet`,
     {
