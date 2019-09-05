@@ -224,7 +224,6 @@ export default class IndexPage extends React.Component {
                     </div>
                 </div>
             </div>
-            <button type="submit" onClick={event => this.redirectToCheckout(event)} className="btn btn-light btn-xl">Order Now!</button>
           </div>
         </section>
         
