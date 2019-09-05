@@ -281,7 +281,7 @@ export default class IndexPage extends React.Component {
   }
 }
 
-ReactDOM.render(<IndexPage/>, document.getElementById("root"));
+//ReactDOM.render(<IndexPage/>, document.getElementById("root"));
 
 export const imageData = graphql`
   query {
