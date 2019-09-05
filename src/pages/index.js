@@ -31,7 +31,7 @@ export default class IndexPage extends React.Component {
     event.preventDefault()
     const { error } = await this.stripe.redirectToCheckout({
       items: [{ sku: "sku_FjpF5383lsXy99", quantity: 1 }],
-      successUrl: `https://smartsupplements.ca`,
+      successUrl: `https://smartsupplements.ca/thankyou`,
       cancelUrl: `https://smartsupplements.ca`,
     })
 
