@@ -179,7 +179,52 @@ export default class IndexPage extends React.Component {
         <section className="page-section bg-dark text-white">
           <div className="container text-center">
             <h2 className="mb-4">Buy Cognisense!</h2>
-            <button onClick={event => this.redirectToCheckout(event)} className="btn btn-light btn-xl">Order Now!</button>
+            <div className="row example-wrapper">
+                <div className="col-xs-12 col-sm-6 offset-sm-3 example-col">
+                    <div className="card">
+                        <div className="card-block">
+                            <form className="k-form" name="contact" method="post" data-netlify="true">
+                                <fieldset>
+                                    <legend>User Details</legend>
+
+                                    <label className="k-form-field">
+                                        <span>First Name</span>
+                                        <input className="k-textbox" placeholder="Your Name" />
+                                    </label>
+                                    <label className="k-form-field">
+                                        <span>Last Name</span>
+                                        <input className="k-textbox" placeholder="Your Last Name" />
+                                    </label>
+
+                                    <label className="k-form-field">
+                                        <span>Email <span className="k-required">*</span></span>
+                                        <input type="email" className="k-textbox" placeholder="Your Email" />
+                                    </label>
+
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>Shipping Address</legend>
+                                    <label className="k-form-field">
+                                        <span>Address</span>
+                                        <input className="k-textbox" placeholder="Your Address" />
+                                    </label>
+                                    <label className="k-form-field">
+                                        <span>Postal Code</span>
+                                        <input className="k-textbox" placeholder="Your Postal Code"/>
+                                    </label>
+                                    <label className="k-form-field">
+                                        <span>Country</span>
+                                        <input className="k-textbox" placeholder="Your Country"/>
+                                    </label>
+                                </fieldset>
+                                <button type="submit" onClick={event => this.redirectToCheckout(event)} className="btn btn-light btn-xl">Order Now!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" onClick={event => this.redirectToCheckout(event)} className="btn btn-light btn-xl">Order Now!</button>
           </div>
         </section>
         
